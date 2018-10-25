@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
-		848E090F2180CB4F00C98D96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090E2180CB4F00C98D96 /* ViewController.swift */; };
 		848E09122180CB4F00C98D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09102180CB4F00C98D96 /* Main.storyboard */; };
 		848E09142180CB5000C98D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848E09132180CB5000C98D96 /* Assets.xcassets */; };
 		848E09172180CB5000C98D96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09152180CB5000C98D96 /* LaunchScreen.storyboard */; };
+		848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */; };
+		848E09212180CE0B00C98D96 /* Recept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E09202180CE0B00C98D96 /* Recept.swift */; };
+		84B0C189218251840007BABE /* ShowReceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C188218251840007BABE /* ShowReceptViewController.swift */; };
+		84B0C18B2182562B0007BABE /* AddReceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C18A2182562B0007BABE /* AddReceptViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848E090C2180CB4F00C98D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		848E090E2180CB4F00C98D96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		848E09112180CB4F00C98D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		848E09132180CB5000C98D96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		848E09162180CB5000C98D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848E09182180CB5000C98D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptenTableViewController.swift; sourceTree = "<group>"; };
+		848E09202180CE0B00C98D96 /* Recept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recept.swift; sourceTree = "<group>"; };
+		84B0C188218251840007BABE /* ShowReceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceptViewController.swift; sourceTree = "<group>"; };
+		84B0C18A2182562B0007BABE /* AddReceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceptViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				848E090C2180CB4F00C98D96 /* AppDelegate.swift */,
-				848E090E2180CB4F00C98D96 /* ViewController.swift */,
 				848E09102180CB4F00C98D96 /* Main.storyboard */,
+				84B0C18A2182562B0007BABE /* AddReceptViewController.swift */,
+				84B0C188218251840007BABE /* ShowReceptViewController.swift */,
+				848E09202180CE0B00C98D96 /* Recept.swift */,
 				848E09132180CB5000C98D96 /* Assets.xcassets */,
 				848E09152180CB5000C98D96 /* LaunchScreen.storyboard */,
 				848E09182180CB5000C98D96 /* Info.plist */,
+				848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */,
 			);
 			path = Kokkerellen;
 			sourceTree = "<group>";
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848E090F2180CB4F00C98D96 /* ViewController.swift in Sources */,
+				84B0C189218251840007BABE /* ShowReceptViewController.swift in Sources */,
 				848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */,
+				848E09212180CE0B00C98D96 /* Recept.swift in Sources */,
+				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
+				84B0C18B2182562B0007BABE /* AddReceptViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JXFFH96Z89;
 				INFOPLIST_FILE = Kokkerellen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JXFFH96Z89;
 				INFOPLIST_FILE = Kokkerellen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
