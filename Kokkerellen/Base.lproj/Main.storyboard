@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Dtk-an-MuO">
-                                <rect key="frame" x="10" y="74" width="355" height="235.5"/>
+                                <rect key="frame" x="10" y="30" width="355" height="235.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JUu-is-0iy">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="58.5"/>
@@ -89,6 +89,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textEditingChanged:" destination="Qyr-NZ-y0z" eventType="editingChanged" id="SQj-dc-Us1"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -112,6 +115,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textEditingChanged:" destination="Qyr-NZ-y0z" eventType="editingChanged" id="qGD-Kd-BRV"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -135,6 +141,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textEditingChanged:" destination="Qyr-NZ-y0z" eventType="editingChanged" id="nq8-IQ-LRx"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -166,7 +175,7 @@
                     <navigationItem key="navigationItem" title="Nieuw recept" id="Opr-7a-K1z">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="cXW-Qp-yCI">
                             <connections>
-                                <segue destination="oRb-Bo-vKy" kind="unwind" unwindAction="unwindToReceptTableViewWithSegueWithSegue:" id="sFJ-oa-Fx9"/>
+                                <segue destination="kPb-Qd-cAc" kind="show" identifier="saveUnwind" id="Gar-Dc-pQh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -174,12 +183,12 @@
                         <outlet property="TxtBeschrijving" destination="1X4-5G-Nu2" id="EXZ-4L-Lci"/>
                         <outlet property="TxtIngredient" destination="qnl-nA-PHA" id="bsb-9M-K2j"/>
                         <outlet property="TxtTitel" destination="bLb-1l-5tP" id="yWx-Jr-j6O"/>
+                        <outlet property="saveButton" destination="cXW-Qp-yCI" id="zQ9-Rj-w47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2g-hs-FpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="oRb-Bo-vKy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1654" y="-385"/>
+            <point key="canvasLocation" x="1654" y="-412"/>
         </scene>
         <!--Show Recept View Controller-->
         <scene sceneID="rJt-bb-q5y">
@@ -249,4 +258,8 @@
             <point key="canvasLocation" x="936.79999999999995" y="300.89955022488761"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tKO-kG-PpK"/>
+        <segue reference="Gar-Dc-pQh"/>
+    </inferredMetricsTieBreakers>
 </document>
