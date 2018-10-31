@@ -1,7 +1,9 @@
 import UIKit
 
 class AddReceptViewController: UIViewController {
-
+    
+    var recept: Recept!
+    
     @IBOutlet weak var TxtTitel: UITextField!
     @IBOutlet weak var TxtIngredient: UITextField!
     @IBOutlet weak var TxtBeschrijving: UITextField!
@@ -9,7 +11,7 @@ class AddReceptViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         updateSaveButtonState()
     }
     
@@ -20,32 +22,38 @@ class AddReceptViewController: UIViewController {
         let beschrijvingText = TxtBeschrijving.text ?? ""
         
         saveButton.isEnabled = !titeltext.isEmpty && !ingredientText.isEmpty && !beschrijvingText.isEmpty
+        
+        if saveButton.isEnabled {
+            createRecipe();
+        }
     }
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard segue.identifier == "saveUnwind" else {return}
-        
+    //maken van recept\\
+    private func createRecipe() {
         let titel = TxtTitel.text ?? ""
-        let ingredient = TxtIngredient.text ?? ""
+        
+        var ingredient: [String] = []
+        
+        ingredient.append(TxtIngredient.text ?? "")
         let beschrijving = TxtBeschrijving.text ?? ""
         
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving)
+        //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType.dessert, image: "4")
+        
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

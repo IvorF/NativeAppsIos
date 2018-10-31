@@ -1,15 +1,25 @@
 import UIKit
 
-class ReceptenTableViewController: UITableViewController {
+class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var recepten: [Recept] = [
-        Recept(titel: "Eieren met spek", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!"),
-        Recept(titel: "Boterham met kaas", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!"),
-        Recept(titel: "Eieren met spek 2", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!"),
-        Recept(titel: "Boterham met kaas 2", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!")]
+        Recept(titel: "Eieren met spek", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .overige, image: "4"),
+        Recept(titel: "Boterham met kaas", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3"),
+        Recept(titel: "Eieren met spek 2", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .hoofdgerecht, image: "4"),
+        Recept(titel: "TomatenSoep", ingredienten: ["tomaten","water"], beschrijving: "kiep alles bij elkaar en laat 7 uur koken. Smakelijk!", categorie: .soep, image: "2"),
+        Recept(titel: "Boterham met kaas, salami en groenten", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3")]
+    
+    var filteredRecepten: [Recept]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filteredRecepten = recepten
+        
+        setUpSearchBar()
+        alterLayout()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -18,24 +28,52 @@ class ReceptenTableViewController: UITableViewController {
          self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
-    //unwind segue, als save opslaan\\
-    @IBAction func unwindToReceptTableViewWithSegue(segue: UIStoryboardSegue) {
-        
+    //searchbar\\
+    private func setUpSearchBar() {
+        searchBar.delegate = self
     }
     
-    //prepare segue\\
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else { filteredRecepten = recepten;
+            tableView.reloadData()
+            return}
+        filteredRecepten = recepten.filter( { recept -> Bool in
+            recept.titel.lowercased().contains(searchText.lowercased())
+        } )
+        tableView.reloadData()
+    }
+    
+    private func alterLayout() {
+        searchBar.placeholder = "Zoek naar een recept"
+    }
+    
+    //unwind segue, als save opslaan\\
+    @IBAction func unwindToReceptTableViewWithSegue(segue: UIStoryboardSegue) {
+        let sourceViewController = segue.source as? AddReceptViewController
+        
+        if let recept = sourceViewController?.recept {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                recepten[selectedIndexPath.row] = recept
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: recepten.count, section: 0)
+                recepten.append(recept)
+                filteredRecepten = recepten;
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
+    
+    //prepare segue voor details recept\\
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecept" {
             let indexPath = tableView.indexPathForSelectedRow!
-            let recept = recepten[indexPath.row]
-            let navController = segue.destination as! UINavigationController
-            let showReceptViewController = navController.topViewController as! ShowReceptViewController
-            
+            let recept = filteredRecepten[indexPath.row]
+            let showReceptViewController = segue.destination as! ShowReceptViewController
+
             showReceptViewController.recept = recept
         }
     }
-
-    // MARK: - Table view data source
 
     //aantal secties\\
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,7 +83,7 @@ class ReceptenTableViewController: UITableViewController {
     //aantal cellen\\
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return recepten.count
+            return filteredRecepten.count
         } else {
             return 0
         }
@@ -53,33 +91,42 @@ class ReceptenTableViewController: UITableViewController {
 
     //vullen van de cellen\\
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReceptCell", for: indexPath)
+        //dequeue cell\\
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReceptCell", for: indexPath) as! ReceptTableViewCell
         
-        let recept = recepten[indexPath.row]
+        //fetch model object to display\\
+        let recept = filteredRecepten[indexPath.row]
         
-        cell.textLabel?.text = recept.titel
-        cell.detailTextLabel?.text = recept.beschrijving
+        //cinfigure cell\\
+        cell.update(with: recept)
+        cell.showsReorderControl = true
 
+        //return cell\\
         return cell
+    }
+    
+    //hoogte cell\\
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     //selecteren van een rij en titel printen\\
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let recept = recepten[indexPath.row]
+        let recept = filteredRecepten[indexPath.row]
         print(recept.titel)
     }
     
     //verplaatsen van recepten naar andere cell\\
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let movedRecept = recepten.remove(at: fromIndexPath.row)
-        recepten.insert(movedRecept, at: to.row)
+        let movedRecept = filteredRecepten.remove(at: fromIndexPath.row)
+        filteredRecepten.insert(movedRecept, at: to.row)
         tableView.reloadData()
     }
     
     //verwijderen van recepten\\
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            recepten.remove(at: indexPath.row)
+            filteredRecepten.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

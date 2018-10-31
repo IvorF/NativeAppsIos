@@ -16,6 +16,7 @@ class ShowReceptViewController: UIViewController {
             TxtTitel.text = recept.titel
             txtIngredienten.text = recept.ingredienten[0]
             TxtBeschrijving.text = recept.beschrijving
+            ImgFoto.image = UIImage(named: recept.image)
         }
     }
     
