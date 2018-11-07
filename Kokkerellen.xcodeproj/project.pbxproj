@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */; };
+		843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCB2192F7480006DA74 /* Categorie.swift */; };
+		843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */; };
 		8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */; };
 		8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4C2189BB610046F164 /* CategorieType.swift */; };
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptCategorieTableViewCell.swift; sourceTree = "<group>"; };
+		843F5FCB2192F7480006DA74 /* Categorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorie.swift; sourceTree = "<group>"; };
+		843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieTableViewController.swift; sourceTree = "<group>"; };
 		8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4C2189BB610046F164 /* CategorieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieType.swift; sourceTree = "<group>"; };
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +51,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843F5FC62192F45C0006DA74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				848E09202180CE0B00C98D96 /* Recept.swift */,
+				8481DA4C2189BB610046F164 /* CategorieType.swift */,
+				843F5FCB2192F7480006DA74 /* Categorie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		843F5FC72192F4F30006DA74 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */,
+				84B0C188218251840007BABE /* ShowReceptViewController.swift */,
+				84B0C18A2182562B0007BABE /* AddReceptViewController.swift */,
+				843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		843F5FC82192F53B0006DA74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */,
+				843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		848E09002180CB4F00C98D96 = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +100,14 @@
 		848E090B2180CB4F00C98D96 /* Kokkerellen */ = {
 			isa = PBXGroup;
 			children = (
+				843F5FC72192F4F30006DA74 /* View Controllers */,
+				843F5FC82192F53B0006DA74 /* Views */,
+				843F5FC62192F45C0006DA74 /* Model */,
 				848E090C2180CB4F00C98D96 /* AppDelegate.swift */,
 				848E09102180CB4F00C98D96 /* Main.storyboard */,
-				8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */,
-				84B0C18A2182562B0007BABE /* AddReceptViewController.swift */,
-				84B0C188218251840007BABE /* ShowReceptViewController.swift */,
-				848E09202180CE0B00C98D96 /* Recept.swift */,
-				8481DA4C2189BB610046F164 /* CategorieType.swift */,
 				848E09132180CB5000C98D96 /* Assets.xcassets */,
 				848E09152180CB5000C98D96 /* LaunchScreen.storyboard */,
 				848E09182180CB5000C98D96 /* Info.plist */,
-				848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */,
 			);
 			path = Kokkerellen;
 			sourceTree = "<group>";
@@ -150,12 +183,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */,
+				843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */,
 				84B0C189218251840007BABE /* ShowReceptViewController.swift in Sources */,
 				848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */,
 				8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */,
 				848E09212180CE0B00C98D96 /* Recept.swift in Sources */,
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
 				8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */,
+				843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */,
 				84B0C18B2182562B0007BABE /* AddReceptViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

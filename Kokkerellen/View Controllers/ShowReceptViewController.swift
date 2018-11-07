@@ -7,6 +7,7 @@ class ShowReceptViewController: UIViewController {
     @IBOutlet weak var txtIngredienten: UILabel!
     @IBOutlet weak var TxtBeschrijving: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
