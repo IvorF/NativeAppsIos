@@ -82,11 +82,22 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         if segue.identifier == "ShowRecept" {
             let indexPath = tableView.indexPathForSelectedRow!
             let recept = filteredRecepten[indexPath.row]
-            let showReceptViewController = segue.destination as! ShowReceptViewController
+            
+            let showReceptViewController = segue.destination as! ShowReceptTableViewController
             
             showReceptViewController.recept = recept
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowRecept" {
+//            let indexPath = tableView.indexPathForSelectedRow!
+//            let recept = filteredRecepten[indexPath.row]
+//            let showReceptViewController = segue.destination as! ShowReceptViewController
+//
+//            showReceptViewController.recept = recept
+//        }
+//    }
     
     //aantal secties\\
     override func numberOfSections(in tableView: UITableView) -> Int {

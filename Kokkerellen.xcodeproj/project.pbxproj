@@ -10,6 +10,8 @@
 		843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */; };
 		843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCB2192F7480006DA74 /* Categorie.swift */; };
 		843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */; };
+		843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */; };
+		843F5FD221932F090006DA74 /* AddReceptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */; };
 		8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */; };
 		8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4C2189BB610046F164 /* CategorieType.swift */; };
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
@@ -18,7 +20,6 @@
 		848E09172180CB5000C98D96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09152180CB5000C98D96 /* LaunchScreen.storyboard */; };
 		848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */; };
 		848E09212180CE0B00C98D96 /* Recept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E09202180CE0B00C98D96 /* Recept.swift */; };
-		84B0C189218251840007BABE /* ShowReceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C188218251840007BABE /* ShowReceptViewController.swift */; };
 		84B0C18B2182562B0007BABE /* AddReceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C18A2182562B0007BABE /* AddReceptViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,8 @@
 		843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptCategorieTableViewCell.swift; sourceTree = "<group>"; };
 		843F5FCB2192F7480006DA74 /* Categorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorie.swift; sourceTree = "<group>"; };
 		843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieTableViewController.swift; sourceTree = "<group>"; };
+		843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceptTableViewController.swift; sourceTree = "<group>"; };
+		843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceptTableViewController.swift; sourceTree = "<group>"; };
 		8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4C2189BB610046F164 /* CategorieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieType.swift; sourceTree = "<group>"; };
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +39,6 @@
 		848E09182180CB5000C98D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptenTableViewController.swift; sourceTree = "<group>"; };
 		848E09202180CE0B00C98D96 /* Recept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recept.swift; sourceTree = "<group>"; };
-		84B0C188218251840007BABE /* ShowReceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceptViewController.swift; sourceTree = "<group>"; };
 		84B0C18A2182562B0007BABE /* AddReceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceptViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,8 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */,
-				84B0C188218251840007BABE /* ShowReceptViewController.swift */,
+				843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */,
 				84B0C18A2182562B0007BABE /* AddReceptViewController.swift */,
+				843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */,
 				843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */,
 			);
 			path = "View Controllers";
@@ -185,12 +188,13 @@
 			files = (
 				843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */,
 				843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */,
-				84B0C189218251840007BABE /* ShowReceptViewController.swift in Sources */,
 				848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */,
+				843F5FD221932F090006DA74 /* AddReceptTableViewController.swift in Sources */,
 				8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */,
 				848E09212180CE0B00C98D96 /* Recept.swift in Sources */,
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
 				8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */,
+				843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */,
 				843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */,
 				84B0C18B2182562B0007BABE /* AddReceptViewController.swift in Sources */,
 			);
