@@ -10,25 +10,49 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     @IBOutlet weak var imgPhoto: UIImageView!
     
     @IBAction func btnPhoto(_ sender: UIButton) {
+        //imagepicker\\
         let image = UIImagePickerController()
         image.delegate = self
         
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        
         image.allowsEditing = false
         
-        self.present(image, animated: true) {
-            //after it is complete
-            
-        }
+        //actionsheet\\
+        let actionSheet = UIAlertController(title: "foto bron", message: "vanwaar wilt u een foto kiezen?", preferredStyle: .actionSheet)
+        
+        //knoppen\\
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                //present\\
+                self.present(image, animated: true, completion: nil)
+            } else {
+                print("camera niet beschikbaar")
+            }
+
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Foto's", style: .default, handler: { (action:UIAlertAction) in
+            image.sourceType = .photoLibrary
+            //present\\
+            self.present(image, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Annuleren", style: .cancel, handler: nil))
+        
+        //present\\
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
-    //UIImagePickerControllerDelegate Methode\\
+    //UIImagePickerControllerDelegate Methodes\\
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imgPhoto.image = image
         }
         
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
