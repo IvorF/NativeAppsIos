@@ -62,7 +62,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     
     //unwind segue, als save opslaan\\
     @IBAction func unwindToReceptTableViewWithSegue(segue: UIStoryboardSegue) {
-        let sourceViewController = segue.source as? AddReceptViewController
+        let sourceViewController = segue.source as? AddReceptTableViewController
         
         if let recept = sourceViewController?.recept {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {

@@ -1,12 +1,36 @@
 import UIKit
 
-class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var lblSave: UIBarButtonItem!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtCategorie: UITextField!
     @IBOutlet weak var txtIngredienten: UITextField!
     @IBOutlet weak var txtOmschrijving: UITextField!
+    @IBOutlet weak var imgPhoto: UIImageView!
+    
+    @IBAction func btnPhoto(_ sender: UIButton) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        image.allowsEditing = false
+        
+        self.present(image, animated: true) {
+            //after it is complete
+            
+        }
+    }
+    
+    //UIImagePickerControllerDelegate Methode\\
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imgPhoto.image = image
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     var recept: Recept!
     
@@ -113,7 +137,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
     /*
