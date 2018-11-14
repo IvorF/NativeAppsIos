@@ -173,21 +173,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="top" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="0rl-bS-G9J">
-                                                    <rect key="frame" x="42" y="0.0" width="294.5" height="139"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="0rl-bS-G9J">
+                                                    <rect key="frame" x="20" y="10" width="335" height="130"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mfp-ih-VtL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="139"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="141.5" height="130"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iZm-9X-1H3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="101" height="101"/>
+                                                                    <rect key="frame" x="22.5" y="0.0" width="97" height="97"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="iZm-9X-1H3" secondAttribute="height" multiplier="1:1" id="V2I-Am-Szv"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVb-h7-PjN">
-                                                                    <rect key="frame" x="2" y="109" width="97" height="30"/>
+                                                                    <rect key="frame" x="22.5" y="105" width="97" height="25"/>
                                                                     <state key="normal" title="Selecteer foto"/>
                                                                     <connections>
                                                                         <action selector="btnPhoto:" destination="08h-um-ddH" eventType="touchUpInside" id="yX4-AM-cKX"/>
@@ -196,7 +195,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Naam van het recept" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ziL-nz-uEV">
-                                                            <rect key="frame" x="139" y="0.0" width="155.5" height="30"/>
+                                                            <rect key="frame" x="179.5" y="0.0" width="155.5" height="30"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -206,8 +205,18 @@
                                                             </connections>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="mfp-ih-VtL" firstAttribute="leading" secondItem="0rl-bS-G9J" secondAttribute="leading" id="Ge1-kh-LRd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ziL-nz-uEV" secondAttribute="trailing" id="ifo-QL-JiB"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0rl-bS-G9J" firstAttribute="leading" secondItem="lJg-pZ-jnn" secondAttribute="leading" constant="20" id="FsB-4q-9vb"/>
+                                                <constraint firstAttribute="bottom" secondItem="0rl-bS-G9J" secondAttribute="bottom" constant="10" id="WoC-lr-lIY"/>
+                                                <constraint firstAttribute="trailing" secondItem="0rl-bS-G9J" secondAttribute="trailing" constant="20" id="fdt-Zw-7LR"/>
+                                                <constraint firstItem="0rl-bS-G9J" firstAttribute="top" secondItem="lJg-pZ-jnn" secondAttribute="top" constant="10" id="gtB-KZ-gQZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="LX1-Hh-iEt">
@@ -243,22 +252,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredienten" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V7T-6d-HhW">
-                                                    <rect key="frame" x="20" y="10" width="335" height="130"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredienten:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-5A-uYQ">
+                                                    <rect key="frame" x="26" y="21" width="323" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U9G-qs-Rdk">
+                                                    <rect key="frame" x="26" y="41" width="323" height="108"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="08h-um-ddH" eventType="editingChanged" id="Y2t-dU-9pN"/>
-                                                        <action selector="editingChanged:" destination="08h-um-ddH" eventType="editingDidEnd" id="pH9-AD-Yg1"/>
-                                                    </connections>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="V7T-6d-HhW" secondAttribute="bottom" constant="10" id="Ugm-qv-gNb"/>
-                                                <constraint firstItem="V7T-6d-HhW" firstAttribute="top" secondItem="x3M-uO-O1U" secondAttribute="top" constant="10" id="eAh-OO-Zzb"/>
-                                                <constraint firstAttribute="trailing" secondItem="V7T-6d-HhW" secondAttribute="trailing" constant="20" id="eNt-Pb-AT0"/>
-                                                <constraint firstItem="V7T-6d-HhW" firstAttribute="leading" secondItem="x3M-uO-O1U" secondAttribute="leading" constant="20" id="yES-As-hwJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="U9G-qs-Rdk" secondAttribute="trailing" constant="10" id="2MT-2H-yGr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bIX-5A-uYQ" secondAttribute="trailing" constant="10" id="5UD-ii-uIo"/>
+                                                <constraint firstItem="bIX-5A-uYQ" firstAttribute="top" secondItem="x3M-uO-O1U" secondAttribute="topMargin" constant="10" id="683-OT-Otc"/>
+                                                <constraint firstItem="U9G-qs-Rdk" firstAttribute="top" secondItem="x3M-uO-O1U" secondAttribute="topMargin" constant="30" id="Obx-yc-Zyn"/>
+                                                <constraint firstItem="U9G-qs-Rdk" firstAttribute="bottom" secondItem="x3M-uO-O1U" secondAttribute="bottomMargin" constant="10" id="X6h-fe-Ach"/>
+                                                <constraint firstItem="bIX-5A-uYQ" firstAttribute="leading" secondItem="x3M-uO-O1U" secondAttribute="leadingMargin" constant="10" id="hsm-al-YRC"/>
+                                                <constraint firstItem="U9G-qs-Rdk" firstAttribute="leading" secondItem="x3M-uO-O1U" secondAttribute="leadingMargin" constant="10" id="zyV-Be-cZE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -269,22 +283,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Omschrijving" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C1x-be-EBr">
-                                                    <rect key="frame" x="20" y="10" width="335" height="230"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omschrijving:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIh-QQ-2aK">
+                                                    <rect key="frame" x="26" y="21" width="323" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9aK-a3-yRg">
+                                                    <rect key="frame" x="26" y="41" width="323" height="188"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="08h-um-ddH" eventType="editingChanged" id="WzP-Le-G6o"/>
-                                                        <action selector="editingChanged:" destination="08h-um-ddH" eventType="editingDidEnd" id="lQh-Fa-f7d"/>
-                                                    </connections>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="C1x-be-EBr" firstAttribute="leading" secondItem="48T-Tc-1jg" secondAttribute="leading" constant="20" id="JCo-cz-qGV"/>
-                                                <constraint firstAttribute="bottom" secondItem="C1x-be-EBr" secondAttribute="bottom" constant="10" id="OzW-n4-HqU"/>
-                                                <constraint firstAttribute="trailing" secondItem="C1x-be-EBr" secondAttribute="trailing" constant="20" id="bds-sp-4KL"/>
-                                                <constraint firstItem="C1x-be-EBr" firstAttribute="top" secondItem="48T-Tc-1jg" secondAttribute="top" constant="10" id="cpF-AD-oUa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mIh-QQ-2aK" secondAttribute="trailing" constant="10" id="SOs-7S-ruh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9aK-a3-yRg" secondAttribute="bottom" constant="10" id="fPh-v9-1Lh"/>
+                                                <constraint firstItem="mIh-QQ-2aK" firstAttribute="top" secondItem="48T-Tc-1jg" secondAttribute="topMargin" constant="10" id="h6g-n3-rqr"/>
+                                                <constraint firstItem="mIh-QQ-2aK" firstAttribute="leading" secondItem="48T-Tc-1jg" secondAttribute="leadingMargin" constant="10" id="hoQ-kx-78U"/>
+                                                <constraint firstItem="9aK-a3-yRg" firstAttribute="leading" secondItem="48T-Tc-1jg" secondAttribute="leadingMargin" constant="10" id="new-bp-wFj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9aK-a3-yRg" secondAttribute="trailing" constant="10" id="s4Y-eZ-0cP"/>
+                                                <constraint firstItem="9aK-a3-yRg" firstAttribute="top" secondItem="48T-Tc-1jg" secondAttribute="topMargin" constant="30" id="spl-xW-lGE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -307,15 +326,15 @@
                         <outlet property="imgPhoto" destination="iZm-9X-1H3" id="PkY-HW-cZe"/>
                         <outlet property="lblSave" destination="3Ui-aa-gKr" id="6up-8n-ApJ"/>
                         <outlet property="txtCategorie" destination="g8j-Qr-5mG" id="sCs-Ej-upx"/>
-                        <outlet property="txtIngredienten" destination="V7T-6d-HhW" id="7dG-j9-OiK"/>
+                        <outlet property="txtIngredient" destination="U9G-qs-Rdk" id="9ee-EP-75i"/>
                         <outlet property="txtNaam" destination="ziL-nz-uEV" id="KGo-5H-PFt"/>
-                        <outlet property="txtOmschrijving" destination="C1x-be-EBr" id="Lek-fn-nHY"/>
+                        <outlet property="txtOmschrijving" destination="9aK-a3-yRg" id="Q15-1H-5MX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmi-nW-Ong" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4XP-HA-qkH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4613.6000000000004" y="-410.64467766116945"/>
+            <point key="canvasLocation" x="4549.6000000000004" y="-470.01499250374815"/>
         </scene>
         <!--Title-->
         <scene sceneID="Pee-7l-ON1">
@@ -450,7 +469,7 @@
                     <navigationItem key="navigationItem" title="Title" id="gGw-hM-zTh">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Qd5-ao-Xha">
                             <connections>
-                                <segue destination="08h-um-ddH" kind="show" identifier="editSegue" id="Qjk-PF-YrL"/>
+                                <segue destination="08h-um-ddH" kind="show" identifier="editRecept" id="Qjk-PF-YrL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

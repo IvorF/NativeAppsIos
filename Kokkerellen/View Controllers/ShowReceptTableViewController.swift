@@ -44,6 +44,15 @@ class ShowReceptTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //edit recept\\
+        if segue.identifier == "editRecept" {
+            let addReceptViewController = segue.destination as! AddReceptTableViewController
+            
+            addReceptViewController.recept = recept
+        }
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

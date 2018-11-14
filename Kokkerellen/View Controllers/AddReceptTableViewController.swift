@@ -1,12 +1,12 @@
 import UIKit
 
-class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var lblSave: UIBarButtonItem!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtCategorie: UITextField!
-    @IBOutlet weak var txtIngredienten: UITextField!
-    @IBOutlet weak var txtOmschrijving: UITextField!
+    @IBOutlet weak var txtIngredient: UITextView!
+    @IBOutlet weak var txtOmschrijving: UITextView!
     @IBOutlet weak var imgPhoto: UIImageView!
     
     @IBAction func btnPhoto(_ sender: UIButton) {
@@ -71,7 +71,46 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         //picker\\
         maakCategoriePicker()
         createToolbar()
-
+        
+        //edit recept\\
+        if let recept = recept {
+            txtNaam.text = recept.titel
+            txtCategorie.text = recept.categorie.rawValue
+            
+            let rec = recept.ingredienten
+            
+            for recept in rec {
+                txtIngredient.text = recept + "\n"
+            }
+            
+            txtOmschrijving.text = recept.beschrijving
+            imgPhoto.image = UIImage(named: recept.image)
+        }
+//        txtIngredient.textColor = UIColor.lightGray
+//        txtOmschrijving.textColor = UIColor.lightGray
+    }
+    
+    //placeholder textview\\
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if txtIngredient.textColor == UIColor.lightGray {
+            txtIngredient.text = nil
+            txtIngredient.textColor = UIColor.black
+        }
+        if txtOmschrijving.textColor == UIColor.lightGray {
+            txtOmschrijving.text = nil
+            txtOmschrijving.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if txtIngredient.text.isEmpty {
+            txtIngredient.text = "Placeholder"
+            txtIngredient.textColor = UIColor.lightGray
+        }
+        if txtOmschrijving.text.isEmpty {
+            txtOmschrijving.text = "Placeholder"
+            txtOmschrijving.textColor = UIColor.lightGray
+        }
     }
     
     //maak picker\\
@@ -123,10 +162,11 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     //controleren of alles velden zijn ingevuld\\
     func updateSaveButtonState() {
         let titeltext = txtNaam.text ?? ""
-        let ingredientText = txtIngredienten.text ?? ""
+        let ingredientText = txtIngredient.text ?? ""
         let beschrijvingText = txtOmschrijving.text ?? ""
+        let categorieText = txtCategorie.text ?? ""
         
-        lblSave.isEnabled = !titeltext.isEmpty && !ingredientText.isEmpty && !beschrijvingText.isEmpty
+        lblSave.isEnabled = !titeltext.isEmpty && !beschrijvingText.isEmpty && !ingredientText.isEmpty && !categorieText.isEmpty
         
         if lblSave.isEnabled {
             createRecipe();
@@ -141,19 +181,18 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     //maken van recept\\
     private func createRecipe() {
         let titel = txtNaam.text ?? ""
-        
         var ingredient: [String] = []
-        
-        ingredient.append(txtIngredienten.text ?? "")
+        ingredient.append(txtIngredient.text ?? "")
         let beschrijving = txtOmschrijving.text ?? ""
+        let categorie = txtCategorie.text ?? ""
+        let image = imgPhoto.image
         
         //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType.dessert, image: "1")
+        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType(rawValue: categorie) ?? CategorieType.hoofdgerecht, image: "1")
         
     }
 
-    // MARK: - Table view data source
-
+    //Table view data source\\
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -220,3 +259,38 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     */
 
 }
+
+//ad done button textfield\\
+/*extension UITextField{
+    
+    @IBInspectable var doneAccessory: Bool{
+        get{
+            return self.doneAccessory
+        }
+        set (hasDone) {
+            if hasDone{
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction()
+    {
+        self.resignFirstResponder()
+    }
+}*/

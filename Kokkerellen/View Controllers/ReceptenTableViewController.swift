@@ -23,11 +23,6 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         
         setUpSearchBar()
         alterLayout()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        
     }
     
     //filter recepten\\
@@ -56,6 +51,10 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     private func alterLayout() {
         searchBar.placeholder = "Zoek naar een recept"
     }
@@ -67,6 +66,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         if let recept = sourceViewController?.recept {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 recepten[selectedIndexPath.row] = recept
+                filteredRecepten = recepten;
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
                 let newIndexPath = IndexPath(row: recepten.count, section: 0)
@@ -79,6 +79,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     
     //prepare segue voor details recept\\
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //show recept\\
         if segue.identifier == "ShowRecept" {
             let indexPath = tableView.indexPathForSelectedRow!
             let recept = filteredRecepten[indexPath.row]
