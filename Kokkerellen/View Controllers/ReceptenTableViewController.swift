@@ -4,18 +4,21 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var recepten: [Recept] = [
-        Recept(titel: "Eieren met spek", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .overige, image: "4"),
-        Recept(titel: "Boterham met kaas", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3"),
-        Recept(titel: "Eieren met spek 2", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .hoofdgerecht, image: "4"),
-        Recept(titel: "TomatenSoep", ingredienten: ["tomaten","water"], beschrijving: "kiep alles bij elkaar en laat 7 uur koken. Smakelijk!", categorie: .soep, image: "2"),
-        Recept(titel: "Boterham met kaas, salami en groenten", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3")]
+    var recepten: [Recept] = []
     
     var filteredRecepten: [Recept]!
     var cat: Categorie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        if let savedData = Recept.loadFromFile() {
+//            recepten.append(contentsOf: savedData)
+//        } else {
+            recepten.append(contentsOf: Recept.loadSampleRecepten())
+//        }
+        
+        recepten[0].favoriet = true
         
         filterRecept()
         
@@ -74,6 +77,9 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 filteredRecepten = recepten;
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            
+            // Added
+//            Recept.saveToFile(recepten: recepten)
         }
     }
     

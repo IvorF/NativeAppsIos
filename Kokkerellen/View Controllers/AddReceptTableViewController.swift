@@ -86,31 +86,11 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
             txtOmschrijving.text = recept.beschrijving
             imgPhoto.image = UIImage(named: recept.image)
         }
-//        txtIngredient.textColor = UIColor.lightGray
-//        txtOmschrijving.textColor = UIColor.lightGray
     }
     
-    //placeholder textview\\
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if txtIngredient.textColor == UIColor.lightGray {
-            txtIngredient.text = nil
-            txtIngredient.textColor = UIColor.black
-        }
-        if txtOmschrijving.textColor == UIColor.lightGray {
-            txtOmschrijving.text = nil
-            txtOmschrijving.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if txtIngredient.text.isEmpty {
-            txtIngredient.text = "Placeholder"
-            txtIngredient.textColor = UIColor.lightGray
-        }
-        if txtOmschrijving.text.isEmpty {
-            txtOmschrijving.text = "Placeholder"
-            txtOmschrijving.textColor = UIColor.lightGray
-        }
+    //controleren textview\\
+    func textViewDidChange(_ textView: UITextView) {
+        updateSaveButtonState()
     }
     
     //maak picker\\
@@ -188,14 +168,14 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         let image = imgPhoto.image
         
         //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType(rawValue: categorie) ?? CategorieType.hoofdgerecht, image: "1")
+        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType(rawValue: categorie) ?? CategorieType.hoofdgerecht, image: "1", favoriet: false)
         
     }
 
     //Table view data source\\
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

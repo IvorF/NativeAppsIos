@@ -13,7 +13,7 @@
         <scene sceneID="rqj-5l-1I6">
             <objects>
                 <navigationController id="uR5-nc-4xq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alle Recepten" image="R" selectedImage="R Selected" id="SNt-K0-YIa"/>
+                    <tabBarItem key="tabBarItem" title="Alle Recepten" image="icons8-food-30" id="SNt-K0-YIa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lCA-U8-0Qo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJS-lW-kxv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="323"/>
+            <point key="canvasLocation" x="2098" y="284"/>
         </scene>
         <!--Recepten-->
         <scene sceneID="XnG-RH-BjH">
@@ -132,6 +132,111 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewp-rl-9yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2946" y="284"/>
+        </scene>
+        <!--Favorieten-->
+        <scene sceneID="Kgx-8d-1Kv">
+            <objects>
+                <tableViewController id="mB0-gV-uCP" customClass="FavorietenTableViewController" customModule="Kokkerellen" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3q5-f9-fJu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReceptCell" rowHeight="95" id="DGx-Gh-OcP" customClass="ReceptTableViewCell" customModule="Kokkerellen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="95"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DGx-Gh-OcP" id="CFF-E8-ps0">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jdg-b9-Coz">
+                                            <rect key="frame" x="10" y="10" width="74.5" height="74.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="jdg-b9-Coz" secondAttribute="height" multiplier="1:1" id="o0w-6Z-Ykl"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="XHZ-1b-dZ5">
+                                            <rect key="frame" x="94.5" y="21" width="254.5" height="53"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIg-9z-5dd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="254.5" height="10.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-J3-20t">
+                                                    <rect key="frame" x="0.0" y="32.5" width="254.5" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorie: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHe-SP-H7J">
+                                                            <rect key="frame" x="0.0" y="0.0" width="123.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOq-di-V26">
+                                                            <rect key="frame" x="131.5" y="0.0" width="123" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cTI-J3-20t" secondAttribute="trailing" id="I5F-dO-bTL"/>
+                                                <constraint firstItem="yIg-9z-5dd" firstAttribute="leading" secondItem="XHZ-1b-dZ5" secondAttribute="leading" id="J5B-Zq-AuM"/>
+                                                <constraint firstAttribute="bottom" secondItem="cTI-J3-20t" secondAttribute="bottom" id="OQK-uY-A6h"/>
+                                                <constraint firstAttribute="trailing" secondItem="yIg-9z-5dd" secondAttribute="trailing" id="S9d-0G-LUh"/>
+                                                <constraint firstItem="cTI-J3-20t" firstAttribute="leading" secondItem="XHZ-1b-dZ5" secondAttribute="leading" id="cca-kv-gjT"/>
+                                                <constraint firstItem="yIg-9z-5dd" firstAttribute="top" secondItem="XHZ-1b-dZ5" secondAttribute="top" id="pFd-Bv-Nb9"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jdg-b9-Coz" firstAttribute="top" secondItem="CFF-E8-ps0" secondAttribute="top" constant="10" id="9zD-gv-gJW"/>
+                                        <constraint firstItem="XHZ-1b-dZ5" firstAttribute="top" secondItem="CFF-E8-ps0" secondAttribute="topMargin" constant="10" id="Hnf-Uk-dui"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="XHZ-1b-dZ5" secondAttribute="bottom" constant="10" id="LqO-WQ-EVP"/>
+                                        <constraint firstItem="XHZ-1b-dZ5" firstAttribute="leading" secondItem="jdg-b9-Coz" secondAttribute="trailing" constant="10" id="OPt-cM-f8D"/>
+                                        <constraint firstAttribute="bottom" secondItem="jdg-b9-Coz" secondAttribute="bottom" constant="10" id="Y8d-vd-W4B"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XHZ-1b-dZ5" secondAttribute="trailing" constant="10" id="dAh-SA-jV1"/>
+                                        <constraint firstItem="jdg-b9-Coz" firstAttribute="leading" secondItem="CFF-E8-ps0" secondAttribute="leading" constant="10" id="vaE-IE-OMn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblCategorie" destination="tOq-di-V26" id="ZYf-kk-Xj3"/>
+                                    <outlet property="lblTitel" destination="yIg-9z-5dd" id="aCc-jn-Cbt"/>
+                                    <outlet property="photo" destination="jdg-b9-Coz" id="5DI-Bc-dg1"/>
+                                    <segue destination="CpW-Nb-d6H" kind="show" identifier="ShowRecept" id="W5f-8U-u4f"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mB0-gV-uCP" id="Cps-xd-IEV"/>
+                            <outlet property="delegate" destination="mB0-gV-uCP" id="afp-dx-6WM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorieten" id="SVr-FU-Zhx"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FP1-fq-xuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2945" y="1009"/>
+        </scene>
+        <!--Favorieten-->
+        <scene sceneID="oUO-S8-Buw">
+            <objects>
+                <navigationController id="ddM-a1-ovC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorieten" image="icons8-christmas-star-24" id="bWg-gS-L3s"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5vl-4Z-TOe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mB0-gV-uCP" kind="relationship" relationship="rootViewController" id="OkU-k0-vL8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ban-rO-Rvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2097" y="1009"/>
         </scene>
         <!--Add Recept Table View Controller-->
         <scene sceneID="zJk-Pd-Jlm">
@@ -263,6 +368,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="08h-um-ddH" id="Kdj-WD-Fz4"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -294,6 +402,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="08h-um-ddH" id="j3d-HT-lj8"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -334,7 +445,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmi-nW-Ong" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4XP-HA-qkH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4549.6000000000004" y="-470.01499250374815"/>
+            <point key="canvasLocation" x="4617" y="-471"/>
         </scene>
         <!--Title-->
         <scene sceneID="Pee-7l-ON1">
@@ -458,6 +569,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="beschrijving" rowHeight="29" id="nny-Oa-aEF">
+                                        <rect key="frame" x="0.0" y="689" width="375" height="29"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nny-Oa-aEF" id="Zux-zo-aym">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="28.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-2g-ACy">
+                                                    <rect key="frame" x="252.5" y="-1" width="162" height="30.5"/>
+                                                    <state key="normal" title="Voeg toe aan favorieten"/>
+                                                    <connections>
+                                                        <action selector="btnFavorietenClicked:" destination="CpW-Nb-d6H" eventType="touchUpInside" id="gwa-r9-JC4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="k8p-2g-ACy" firstAttribute="centerY" secondItem="Zux-zo-aym" secondAttribute="centerY" id="773-Pd-l0x"/>
+                                                <constraint firstItem="k8p-2g-ACy" firstAttribute="centerX" secondItem="Zux-zo-aym" secondAttribute="centerX" id="y1a-Pn-erS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -474,6 +606,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnFavorienten" destination="k8p-2g-ACy" id="fph-ou-AG9"/>
                         <outlet property="imgPhoto" destination="19F-iI-oNV" id="w28-Xc-57E"/>
                         <outlet property="lblBeschrijving" destination="CD2-ry-gWx" id="MNW-jr-6GE"/>
                         <outlet property="lblIngredienten" destination="g8M-BQ-DjR" id="L5l-lY-Wtl"/>
@@ -482,7 +615,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20h-Bg-dBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3802" y="284"/>
+            <point key="canvasLocation" x="3800.8000000000002" y="283.80809595202402"/>
         </scene>
         <!--Categorieën-->
         <scene sceneID="hBb-7s-lCT">
@@ -549,7 +682,13 @@
                             <outlet property="delegate" destination="0VP-hQ-iVE" id="rpT-Aa-Ach"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categorieën" id="AaV-4E-hgl"/>
+                    <navigationItem key="navigationItem" title="Categorieën" id="AaV-4E-hgl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fGS-NI-Wmr">
+                            <connections>
+                                <action selector="addClicked:" destination="0VP-hQ-iVE" id="Pjj-1S-w41"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5BM-nz-cZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -568,17 +707,18 @@
                     <connections>
                         <segue destination="GaZ-VG-L3p" kind="relationship" relationship="viewControllers" id="ckP-Mf-cSh"/>
                         <segue destination="uR5-nc-4xq" kind="relationship" relationship="viewControllers" id="aXJ-Vw-22w"/>
+                        <segue destination="ddM-a1-ovC" kind="relationship" relationship="viewControllers" id="5Fd-Th-cEH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiy-qD-KNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208.8" y="-49.925037481259373"/>
+            <point key="canvasLocation" x="1190" y="284"/>
         </scene>
         <!--Categorieën-->
         <scene sceneID="Diz-0G-fOY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GaZ-VG-L3p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categorieën" image="O" selectedImage="O Selected" id="DWS-5W-8q5"/>
+                    <tabBarItem key="tabBarItem" title="Categorieën" image="icons8-categorize-26" id="DWS-5W-8q5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mvV-mi-hHV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -591,17 +731,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXs-ti-uNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="-392"/>
+            <point key="canvasLocation" x="2121" y="-479"/>
         </scene>
     </scenes>
     <resources>
-        <image name="O" width="28" height="28"/>
-        <image name="O Selected" width="28" height="28"/>
-        <image name="R" width="28" height="28"/>
-        <image name="R Selected" width="28" height="28"/>
+        <image name="icons8-categorize-26" width="19.5" height="19.5"/>
+        <image name="icons8-christmas-star-24" width="18" height="18"/>
+        <image name="icons8-food-30" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qjk-PF-YrL"/>
+        <segue reference="5fZ-sX-s54"/>
+        <segue reference="q5M-JQ-hRW"/>
         <segue reference="sif-QK-8RR"/>
     </inferredMetricsTieBreakers>
 </document>

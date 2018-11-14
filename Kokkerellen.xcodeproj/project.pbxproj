@@ -12,6 +12,8 @@
 		843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */; };
 		843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */; };
 		843F5FD221932F090006DA74 /* AddReceptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */; };
+		845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BC219C3284002BD53A /* FavorietenTableViewController.swift */; };
+		845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */; };
 		8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */; };
 		8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4C2189BB610046F164 /* CategorieType.swift */; };
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieTableViewController.swift; sourceTree = "<group>"; };
 		843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceptTableViewController.swift; sourceTree = "<group>"; };
 		843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceptTableViewController.swift; sourceTree = "<group>"; };
+		845880BC219C3284002BD53A /* FavorietenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewController.swift; sourceTree = "<group>"; };
+		845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4C2189BB610046F164 /* CategorieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieType.swift; sourceTree = "<group>"; };
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +72,7 @@
 				843F5FCF21931F540006DA74 /* ShowReceptTableViewController.swift */,
 				843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */,
 				843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */,
+				845880BC219C3284002BD53A /* FavorietenTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -77,6 +82,7 @@
 			children = (
 				8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */,
 				843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */,
+				845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +198,8 @@
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
 				8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */,
 				843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */,
+				845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */,
+				845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */,
 				843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

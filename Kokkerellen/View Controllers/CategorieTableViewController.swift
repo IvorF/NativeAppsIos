@@ -21,6 +21,44 @@ class CategorieTableViewController: UITableViewController {
         //edit button navigation bar\\
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
+    
+    //nieuwe categorie toevoegen
+    @IBAction func addClicked(_ sender: Any) {
+        showInputDialog()
+    }
+    
+    func showInputDialog() {
+        //Creating UIAlertController and
+        //Setting title and message for the alert dialog
+        let alertController = UIAlertController(title: "Welke categorie wilt u toeveogen?", message: "Vul een categorie in", preferredStyle: .alert)
+        
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Voeg toe", style: .default) { (_) in
+            
+            //getting the input values from user
+            let categorie = alertController.textFields?[0].text
+
+            self.categorie.append(Categorie(cat: categorie ?? ""))
+            self.tableView.reloadData()
+            
+        }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Annuleren", style: .cancel) { (_) in }
+        
+        //adding textfields to our dialog box
+        alertController.addTextField { (textField) in
+            
+        }
+        
+        //adding the action to dialogbox
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 
     // MARK: - Table view data source
     //prepare segue voor categorie recept\\

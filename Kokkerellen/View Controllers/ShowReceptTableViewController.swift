@@ -6,6 +6,19 @@ class ShowReceptTableViewController: UITableViewController {
     @IBOutlet weak var imgPhoto: UIImageView!
     @IBOutlet weak var lblIngredienten: UILabel!
     @IBOutlet weak var lblBeschrijving: UILabel!
+    @IBOutlet weak var btnFavorienten: UIButton!
+    
+    //toeveogen aan favorieten/verwijderen\\
+    @IBAction func btnFavorietenClicked(_ sender: Any) {
+        if recept.favoriet {
+            recept.favoriet = false
+            btnFavorienten.setTitle("Voeg toe aan favorieten", for: .normal)
+        } else {
+            recept.favoriet = true
+            btnFavorienten.setTitle("Verwijder uit favorieten", for: .normal)
+        }
+    }
+    
     
     var recept: Recept!
     
@@ -37,7 +50,7 @@ class ShowReceptTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     //hoogte cell\\
