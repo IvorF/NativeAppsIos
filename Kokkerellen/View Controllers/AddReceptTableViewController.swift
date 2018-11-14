@@ -60,7 +60,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     
     var selectedCategorie: String!
     
-    let categorie = [CategorieType.hoofdgerecht.rawValue, CategorieType.voorgerecht.rawValue, CategorieType.dessert.rawValue, CategorieType.soep.rawValue, CategorieType.overige.rawValue,]
+    let categorie = ["<< Kies categorie >>", CategorieType.hoofdgerecht.rawValue, CategorieType.voorgerecht.rawValue, CategorieType.dessert.rawValue, CategorieType.soep.rawValue, CategorieType.overige.rawValue,]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +146,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         let beschrijvingText = txtOmschrijving.text ?? ""
         let categorieText = txtCategorie.text ?? ""
         
-        lblSave.isEnabled = !titeltext.isEmpty && !beschrijvingText.isEmpty && !ingredientText.isEmpty && !categorieText.isEmpty
+        lblSave.isEnabled = !titeltext.isEmpty && !beschrijvingText.isEmpty && !ingredientText.isEmpty && !categorieText.isEmpty && !(categorieText == "<< Kies categorie >>") ? true:false
         
         if lblSave.isEnabled {
             createRecipe();
