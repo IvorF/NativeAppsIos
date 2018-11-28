@@ -17,7 +17,6 @@ class ReceptCategorieTableViewCell: UITableViewCell {
     }
     
     func update(with categorie: Categorie) {
-        imgPhoto.image = UIImage(named: categorie.image)
         lblTitel.text = categorie.titel
     }
 

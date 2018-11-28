@@ -75,16 +75,12 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         //edit recept\\
         if let recept = recept {
             txtNaam.text = recept.titel
-            txtCategorie.text = recept.categorie.rawValue
-            
-            let rec = recept.ingredienten
-            
-            for recept in rec {
-                txtIngredient.text = recept + "\n"
-            }
+            txtCategorie.text = recept.categorie.first?.titel
+            txtIngredient.text = recept.ingredienten
+
             
             txtOmschrijving.text = recept.beschrijving
-            imgPhoto.image = UIImage(named: recept.image)
+            imgPhoto.image = recept.image
         }
     }
     
@@ -161,15 +157,14 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     //maken van recept\\
     private func createRecipe() {
         let titel = txtNaam.text ?? ""
-        var ingredient: [String] = []
-        ingredient.append(txtIngredient.text ?? "")
+        let ingredient = txtIngredient.text ?? ""
         let beschrijving = txtOmschrijving.text ?? ""
         let categorie = txtCategorie.text ?? ""
         let image = imgPhoto.image
         
         //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType(rawValue: categorie) ?? CategorieType.hoofdgerecht, image: "1", favoriet: false)
-        
+        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, image: image!, favoriet: false)
+        recept.categorie.append(Categorie(cat: categorie))
     }
 
     //Table view data source\\

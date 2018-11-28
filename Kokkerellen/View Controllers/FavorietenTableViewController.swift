@@ -16,7 +16,7 @@ class FavorietenTableViewController: UITableViewController {
 //        if let savedData = Recept.loadFromFile() {
 //            recepten.append(contentsOf: savedData)
 //        } else {
-            recepten.append(contentsOf: Recept.loadSampleRecepten())
+            //recepten.append(contentsOf: Recept.loadSampleRecepten())
 //        }
         
         //refreshcontrol\\

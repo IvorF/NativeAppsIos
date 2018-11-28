@@ -1,14 +1,16 @@
 import UIKit
 
 class CategorieTableViewController: UITableViewController {
-    
     var categorie: [Categorie] = [
-        Categorie(cat: CategorieType.voorgerecht.rawValue),
-        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
-        Categorie(cat: CategorieType.soep.rawValue),
-        Categorie(cat: CategorieType.dessert.rawValue),
-        Categorie(cat: CategorieType.overige.rawValue)
-    ]
+            Categorie(cat: "TestCAT")
+        ]
+//    var categorie: [Categorie] = [
+//        Categorie(cat: CategorieType.voorgerecht.rawValue),
+//        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
+//        Categorie(cat: CategorieType.soep.rawValue),
+//        Categorie(cat: CategorieType.dessert.rawValue),
+//        Categorie(cat: CategorieType.overige.rawValue)
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class CategorieTableViewController: UITableViewController {
             //getting the input values from user
             let categorie = alertController.textFields?[0].text
 
-            self.categorie.append(Categorie(cat: categorie ?? ""))
+            self.categorie.append(Categorie(cat: categorie!))
             self.tableView.reloadData()
             
         }
