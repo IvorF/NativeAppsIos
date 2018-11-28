@@ -181,6 +181,12 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     //verwijderen van recepten\\
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(recepten[indexPath.row])
+            }
+            
             filteredRecepten.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

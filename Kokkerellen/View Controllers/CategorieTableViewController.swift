@@ -3,6 +3,7 @@ import RealmSwift
 
 class CategorieTableViewController: UITableViewController {
     var categorie: [Categorie] = []
+    var recepten: [Recept]!
 //    var categorie: [Categorie] = [
 //        Categorie(cat: CategorieType.voorgerecht.rawValue),
 //        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
@@ -15,6 +16,8 @@ class CategorieTableViewController: UITableViewController {
         super.viewDidLoad()
         
         categorie = removeDuplicates(array: Array(try! Realm().objects(Categorie.self)))
+        
+        recepten = Array(try! Realm().objects(Recept.self))
         
         //refreshcontrol\\
         let ref = UIRefreshControl()
@@ -152,8 +155,40 @@ class CategorieTableViewController: UITableViewController {
     }
     
     //delete knop wordt niet getoond\\
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .none
+//    }
+    
+    //verwijderen van recepten\\
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            var del:Bool = true
+            
+            for recept in recepten {
+                print(recept.categorie.titel + "CAT: " + categorie[indexPath.row].titel)
+                if recept.categorie.titel == categorie[indexPath.row].titel {
+                    del = false
+                }
+            }
+            
+            if del {
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.delete(categorie[indexPath.row])
+                }
+                
+                categorie.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                let alertController = UIAlertController(title: "Deze categorie kan niet verwijderd worden, deze bevat recepten.", message: "", preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: "Ok", style: .cancel) { (_) in })
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+  
+        }
     }
 
     /*
