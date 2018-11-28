@@ -68,6 +68,9 @@ class CategorieTableViewController: UITableViewController {
             try! realm.write {
                 realm.add(Categorie(cat: categorie!))
             }
+            
+            //refresh\\
+            self.refreshData()
         }
         
         //the cancel action doing nothing\\
