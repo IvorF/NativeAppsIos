@@ -1,9 +1,8 @@
 import UIKit
+import RealmSwift
 
 class CategorieTableViewController: UITableViewController {
-    var categorie: [Categorie] = [
-            Categorie(cat: "TestCAT")
-        ]
+    var categorie: [Categorie] = []
 //    var categorie: [Categorie] = [
 //        Categorie(cat: CategorieType.voorgerecht.rawValue),
 //        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
@@ -14,6 +13,8 @@ class CategorieTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categorie = Array(try! Realm().objects(Categorie.self))
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,6 +44,10 @@ class CategorieTableViewController: UITableViewController {
             self.categorie.append(Categorie(cat: categorie!))
             self.tableView.reloadData()
             
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(Categorie(cat: categorie!))
+            }
         }
         
         //the cancel action doing nothing

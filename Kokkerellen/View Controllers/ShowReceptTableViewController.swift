@@ -29,12 +29,13 @@ class ShowReceptTableViewController: UITableViewController {
         if let recept = recept {
             lblTitel.text = recept.titel
             
+            
+            for ingredient in recept.ingredienten {
+                lblIngredienten.text = lblIngredienten.text! + "\n" + ingredient.titel
+            }
 
-            lblIngredienten.text = recept.ingredienten
-            
-            
             lblBeschrijving.text = "\n" + recept.beschrijving
-            imgPhoto.image = recept.image
+            imgPhoto.image = UIImage(data: recept.image)
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -5,7 +5,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var recepten: Results<Recept>!
+    var recepten: [Recept]!
     
     var filteredRecepten: [Recept]!
     var cat: Categorie!
@@ -20,26 +20,28 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
 //        }
         
         //recepten[0].favoriet = true
-        recepten = try! Realm().objects(Recept.self)
+        recepten = Array(try! Realm().objects(Recept.self))
         
-        //filterRecept()
+        filterRecept()
         
-        //filteredRecepten = recepten
+        filteredRecepten = Array(recepten)
         
         setUpSearchBar()
         alterLayout()
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     //filter recepten\\
-//    private func filterRecept() {
-//        guard (cat != nil) else { return }
-//
-//        recepten = recepten.filter( { recept -> Bool in
-//            (recept.categorie.first?.titel.contains(cat.titel))!
-//        } )
-//
-//        print(recepten)
-//    }
+    private func filterRecept() {
+        guard (cat != nil) else { return }
+
+        recepten = recepten.filter( { recept -> Bool in
+            (recept.categorie.titel == cat.titel)
+        } )
+
+        print(recepten)
+    }
     
     //searchbar\\
     private func setUpSearchBar() {
@@ -68,26 +70,25 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     @IBAction func unwindToReceptTableViewWithSegue(segue: UIStoryboardSegue) {
         let sourceViewController = segue.source as? AddReceptTableViewController
         
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(sourceViewController!.recept!)
+        if let recept = sourceViewController?.recept {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                recepten[selectedIndexPath.row] = recept
+                filteredRecepten = recepten;
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: recepten.count, section: 0)
+                recepten.append(recept)
+                filteredRecepten = recepten;
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            
+            //voeg toe in databank\\
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(sourceViewController!.recept!)
+            }
+            
         }
-        
-//        if let recept = sourceViewController?.recept {
-//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-//                recepten[selectedIndexPath.row] = recept
-//                filteredRecepten = recepten;
-//                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-//            } else {
-//                let newIndexPath = IndexPath(row: recepten.count, section: 0)
-//                recepten.append(recept)
-//                filteredRecepten = recepten;
-//                tableView.insertRows(at: [newIndexPath], with: .automatic)
-//            }
-//
-//            // Added
-////            Recept.saveToFile(recepten: recepten)
-//        }
     }
     
     //prepare segue voor details recept\\

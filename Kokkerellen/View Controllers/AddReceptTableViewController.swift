@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
@@ -60,10 +61,16 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     
     var selectedCategorie: String!
     
-    let categorie = ["<< Kies categorie >>", CategorieType.hoofdgerecht.rawValue, CategorieType.voorgerecht.rawValue, CategorieType.dessert.rawValue, CategorieType.soep.rawValue, CategorieType.overige.rawValue,]
+    var categorie = ["<< Kies categorie >>"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //vul categorieen\\
+        let cat = Array(try! Realm().objects(Categorie.self))
+        for titel in cat {
+            categorie.append(titel.titel)
+        }
         
         //savebutton\\
         updateSaveButtonState()
@@ -75,12 +82,16 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         //edit recept\\
         if let recept = recept {
             txtNaam.text = recept.titel
-            txtCategorie.text = recept.categorie.first?.titel
-            txtIngredient.text = recept.ingredienten
-
+            txtCategorie.text = recept.categorie.titel
+            
+            let rec = recept.ingredienten
+            
+            for recept in rec {
+                txtIngredient.text = recept.titel + "\n"
+            }
             
             txtOmschrijving.text = recept.beschrijving
-            imgPhoto.image = recept.image
+            //imgPhoto.image = recept.image
         }
     }
     
@@ -163,8 +174,16 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         let image = imgPhoto.image
         
         //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, image: image!, favoriet: false)
-        recept.categorie.append(Categorie(cat: categorie))
+        recept = Recept()
+        recept.titel = titel
+        recept.ingredienten.append(Ingredient(titel: ingredient))
+        recept.beschrijving = beschrijving
+        recept.categorie = Categorie(cat: categorie)
+        if image != nil {
+            recept.image = self.imgPhoto.image!.pngData()
+        } else  {
+            recept.image = UIImage(named: "1")!.pngData()
+        }
     }
 
     //Table view data source\\

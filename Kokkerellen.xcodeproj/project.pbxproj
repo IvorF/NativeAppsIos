@@ -15,7 +15,6 @@
 		845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BC219C3284002BD53A /* FavorietenTableViewController.swift */; };
 		845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */; };
 		8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */; };
-		8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4C2189BB610046F164 /* CategorieType.swift */; };
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
 		848E09122180CB4F00C98D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09102180CB4F00C98D96 /* Main.storyboard */; };
 		848E09142180CB5000C98D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848E09132180CB5000C98D96 /* Assets.xcassets */; };
@@ -35,7 +34,6 @@
 		845880BC219C3284002BD53A /* FavorietenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewController.swift; sourceTree = "<group>"; };
 		845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptTableViewCell.swift; sourceTree = "<group>"; };
-		8481DA4C2189BB610046F164 /* CategorieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieType.swift; sourceTree = "<group>"; };
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848E090C2180CB4F00C98D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848E09112180CB4F00C98D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				848E09202180CE0B00C98D96 /* Recept.swift */,
-				8481DA4C2189BB610046F164 /* CategorieType.swift */,
 				843F5FCB2192F7480006DA74 /* Categorie.swift */,
 				84F2AD9821AEAD3F0000F63A /* Ingredient.swift */,
 			);
@@ -275,7 +272,6 @@
 				8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */,
 				848E09212180CE0B00C98D96 /* Recept.swift in Sources */,
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
-				8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */,
 				843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */,
 				845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */,
 				845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */,

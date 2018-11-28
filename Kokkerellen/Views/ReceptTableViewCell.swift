@@ -18,9 +18,9 @@ class ReceptTableViewCell: UITableViewCell {
     }
     
     func update(with recept: Recept) {
-        photo.image = recept.image
+        photo.image = UIImage(data: recept.image)
         lblTitel.text = recept.titel
-        lblCategorie.text = recept.categorie.first!.titel
+        lblCategorie.text = recept.categorie.titel
     }
 
 }
