@@ -16,19 +16,15 @@ class FavorietenTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //recepten ophalen\\
         recepten = Array(try! Realm().objects(Recept.self))
-        
-//        if let savedData = Recept.loadFromFile() {
-//            recepten.append(contentsOf: savedData)
-//        } else {
-            //recepten.append(contentsOf: Recept.loadSampleRecepten())
-//        }
-        
+
         //refreshcontrol\\
         let ref = UIRefreshControl()
         ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         tableView.refreshControl = ref
         
+        //favorieten filteren\\
         filterRecept()
         
     }

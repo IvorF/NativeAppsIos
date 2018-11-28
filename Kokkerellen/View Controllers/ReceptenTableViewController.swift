@@ -18,23 +18,22 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         tableView.refreshControl = ref
         
-//        if let savedData = Recept.loadFromFile() {
-//            recepten.append(contentsOf: savedData)
-//        } else {
-            //recepten.append(contentsOf: Recept.loadSampleRecepten())
-//        }
-        
-        //recepten[0].favoriet = true
+        //opvullen recepten\\
         recepten = Array(try! Realm().objects(Recept.self))
         
+        
+        //tonen recepten van juiste categorie\\
         filterRecept()
         
+        //zoeken op recept\\
         filteredRecepten = Array(recepten)
-        
         setUpSearchBar()
+        
+        //placeholder zoekbalk\\
         alterLayout()
         
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        //Realm databank pad\\
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     //refresh data tableview\\
@@ -127,16 +126,6 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowRecept" {
-//            let indexPath = tableView.indexPathForSelectedRow!
-//            let recept = filteredRecepten[indexPath.row]
-//            let showReceptViewController = segue.destination as! ShowReceptViewController
-//
-//            showReceptViewController.recept = recept
-//        }
-//    }
-    
     //aantal secties\\
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -191,51 +180,5 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
