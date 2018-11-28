@@ -202,10 +202,19 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         recept.beschrijving = beschrijving
         recept.categorie = Categorie(cat: categorie)
         if image != nil {
-            recept.image = self.imgPhoto.image!.pngData()
+            recept.image = resizeImage(self.imgPhoto.image!, size: CGSize(width: 100, height: 100)).pngData()
         } else  {
             recept.image = UIImage(named: "1")!.pngData()
         }
+    }
+    
+    //resize image\\
+    func resizeImage(_ image: UIImage, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage!
     }
 
     //Table view data source\\

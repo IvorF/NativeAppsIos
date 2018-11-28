@@ -577,7 +577,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-2g-ACy">
-                                                    <rect key="frame" x="252.5" y="-1" width="162" height="30.5"/>
+                                                    <rect key="frame" x="106.5" y="-1" width="162" height="30.5"/>
                                                     <state key="normal" title="Voeg toe aan favorieten"/>
                                                     <connections>
                                                         <action selector="btnFavorietenClicked:" destination="CpW-Nb-d6H" eventType="touchUpInside" id="gwa-r9-JC4"/>
@@ -741,7 +741,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5fZ-sX-s54"/>
-        <segue reference="q5M-JQ-hRW"/>
+        <segue reference="Qjk-PF-YrL"/>
         <segue reference="sif-QK-8RR"/>
     </inferredMetricsTieBreakers>
 </document>
