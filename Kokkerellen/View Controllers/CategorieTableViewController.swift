@@ -1,17 +1,25 @@
 import UIKit
+import RealmSwift
 
 class CategorieTableViewController: UITableViewController {
-    
-    var categorie: [Categorie] = [
-        Categorie(cat: CategorieType.voorgerecht.rawValue),
-        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
-        Categorie(cat: CategorieType.soep.rawValue),
-        Categorie(cat: CategorieType.dessert.rawValue),
-        Categorie(cat: CategorieType.overige.rawValue)
-    ]
+    var categorie: [Categorie] = []
+//    var categorie: [Categorie] = [
+//        Categorie(cat: CategorieType.voorgerecht.rawValue),
+//        Categorie(cat: CategorieType.hoofdgerecht.rawValue),
+//        Categorie(cat: CategorieType.soep.rawValue),
+//        Categorie(cat: CategorieType.dessert.rawValue),
+//        Categorie(cat: CategorieType.overige.rawValue)
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categorie = removeDuplicates(array: Array(try! Realm().objects(Categorie.self)))
+        
+        //refreshcontrol\\
+        let ref = UIRefreshControl()
+        ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = ref
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -20,6 +28,31 @@ class CategorieTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         //edit button navigation bar\\
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    //refresh data tableview\\
+    @objc private func refreshData() {
+        categorie = removeDuplicates(array: Array(try! Realm().objects(Categorie.self)))
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
+    }
+    
+    //diplicate verwijderen\\
+    func removeDuplicates(array: [Categorie]) -> [Categorie] {
+        var encountered = Set<String>()
+        var result: [Categorie] = []
+        for value in array {
+            if encountered.contains(value.titel) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value.titel)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
     }
     
     //nieuwe categorie toevoegen
@@ -38,9 +71,13 @@ class CategorieTableViewController: UITableViewController {
             //getting the input values from user
             let categorie = alertController.textFields?[0].text
 
-            self.categorie.append(Categorie(cat: categorie ?? ""))
+            self.categorie.append(Categorie(cat: categorie!))
             self.tableView.reloadData()
             
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(Categorie(cat: categorie!))
+            }
         }
         
         //the cancel action doing nothing

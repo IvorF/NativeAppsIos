@@ -15,13 +15,14 @@
 		845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BC219C3284002BD53A /* FavorietenTableViewController.swift */; };
 		845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */; };
 		8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */; };
-		8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481DA4C2189BB610046F164 /* CategorieType.swift */; };
 		848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E090C2180CB4F00C98D96 /* AppDelegate.swift */; };
 		848E09122180CB4F00C98D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09102180CB4F00C98D96 /* Main.storyboard */; };
 		848E09142180CB5000C98D96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848E09132180CB5000C98D96 /* Assets.xcassets */; };
 		848E09172180CB5000C98D96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848E09152180CB5000C98D96 /* LaunchScreen.storyboard */; };
 		848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */; };
 		848E09212180CE0B00C98D96 /* Recept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E09202180CE0B00C98D96 /* Recept.swift */; };
+		84F2AD9921AEAD3F0000F63A /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2AD9821AEAD3F0000F63A /* Ingredient.swift */; };
+		E6092F74EDE8D1F4B72D5856 /* Pods_Kokkerellen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ADAE206F5D7BA932DEF2A2 /* Pods_Kokkerellen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,6 @@
 		845880BC219C3284002BD53A /* FavorietenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewController.swift; sourceTree = "<group>"; };
 		845880BE219C32A9002BD53A /* FavorietenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietenTableViewCell.swift; sourceTree = "<group>"; };
 		8481DA4A2189B60D0046F164 /* ReceptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptTableViewCell.swift; sourceTree = "<group>"; };
-		8481DA4C2189BB610046F164 /* CategorieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieType.swift; sourceTree = "<group>"; };
 		848E09092180CB4F00C98D96 /* Kokkerellen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kokkerellen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848E090C2180CB4F00C98D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848E09112180CB4F00C98D96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,6 +42,10 @@
 		848E09182180CB5000C98D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848E091E2180CD2300C98D96 /* ReceptenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptenTableViewController.swift; sourceTree = "<group>"; };
 		848E09202180CE0B00C98D96 /* Recept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recept.swift; sourceTree = "<group>"; };
+		84F2AD9821AEAD3F0000F63A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		8E231A376A21587244FC9ECC /* Pods-Kokkerellen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kokkerellen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kokkerellen/Pods-Kokkerellen.release.xcconfig"; sourceTree = "<group>"; };
+		9F2C8F89DF7795E1105E7F8E /* Pods-Kokkerellen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kokkerellen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kokkerellen/Pods-Kokkerellen.debug.xcconfig"; sourceTree = "<group>"; };
+		F8ADAE206F5D7BA932DEF2A2 /* Pods_Kokkerellen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kokkerellen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,18 +53,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6092F74EDE8D1F4B72D5856 /* Pods_Kokkerellen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60BEDC425EB4209EBC0FCAEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F2C8F89DF7795E1105E7F8E /* Pods-Kokkerellen.debug.xcconfig */,
+				8E231A376A21587244FC9ECC /* Pods-Kokkerellen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		843F5FC62192F45C0006DA74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				848E09202180CE0B00C98D96 /* Recept.swift */,
-				8481DA4C2189BB610046F164 /* CategorieType.swift */,
 				843F5FCB2192F7480006DA74 /* Categorie.swift */,
+				84F2AD9821AEAD3F0000F63A /* Ingredient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +106,8 @@
 			children = (
 				848E090B2180CB4F00C98D96 /* Kokkerellen */,
 				848E090A2180CB4F00C98D96 /* Products */,
+				60BEDC425EB4209EBC0FCAEE /* Pods */,
+				F99AE376E7D6775FC9D64BD5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +134,14 @@
 			path = Kokkerellen;
 			sourceTree = "<group>";
 		};
+		F99AE376E7D6775FC9D64BD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8ADAE206F5D7BA932DEF2A2 /* Pods_Kokkerellen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 848E091B2180CB5000C98D96 /* Build configuration list for PBXNativeTarget "Kokkerellen" */;
 			buildPhases = (
+				199C24DC3B34ABE7AE255670 /* [CP] Check Pods Manifest.lock */,
 				848E09052180CB4F00C98D96 /* Sources */,
 				848E09062180CB4F00C98D96 /* Frameworks */,
 				848E09072180CB4F00C98D96 /* Resources */,
+				DD3199A99991A6C8B38CAEFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,19 +210,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		199C24DC3B34ABE7AE255670 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kokkerellen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD3199A99991A6C8B38CAEFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kokkerellen/Pods-Kokkerellen-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kokkerellen/Pods-Kokkerellen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		848E09052180CB4F00C98D96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */,
+				84F2AD9921AEAD3F0000F63A /* Ingredient.swift in Sources */,
 				843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */,
 				848E090D2180CB4F00C98D96 /* AppDelegate.swift in Sources */,
 				843F5FD221932F090006DA74 /* AddReceptTableViewController.swift in Sources */,
 				8481DA4B2189B60D0046F164 /* ReceptTableViewCell.swift in Sources */,
 				848E09212180CE0B00C98D96 /* Recept.swift in Sources */,
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
-				8481DA4D2189BB610046F164 /* CategorieType.swift in Sources */,
 				843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */,
 				845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */,
 				845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */,
@@ -344,6 +419,7 @@
 		};
 		848E091C2180CB5000C98D96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2C8F89DF7795E1105E7F8E /* Pods-Kokkerellen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,6 +439,7 @@
 		};
 		848E091D2180CB5000C98D96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E231A376A21587244FC9ECC /* Pods-Kokkerellen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

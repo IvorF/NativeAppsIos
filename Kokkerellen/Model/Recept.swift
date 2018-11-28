@@ -1,12 +1,13 @@
 import Foundation
+import RealmSwift
 
-class Recept/*: NSObject, NSCoding*/ {
-    var titel: String
-    var ingredienten: [String]
-    var beschrijving: String
-    var categorie: CategorieType
-    var image: String
-    var favoriet: Bool
+class Recept : Object/*: NSObject, NSCoding*/ {
+    @objc dynamic var titel: String = ""
+    var ingredienten = List<Ingredient>()
+    @objc dynamic var beschrijving: String = ""
+    @objc dynamic var categorie: Categorie!
+    @objc dynamic var image: Data!
+    @objc dynamic var favoriet: Bool = false
     
     //url archief\\
 //    static var archiveURL: URL {
@@ -15,14 +16,13 @@ class Recept/*: NSObject, NSCoding*/ {
 //        return result
 //    }
     
-    init(titel: String, ingredienten: [String], beschrijving: String, categorie: CategorieType, image: String, favoriet: Bool) {
-        self.titel = titel
-        self.ingredienten = ingredienten
-        self.beschrijving = beschrijving
-        self.categorie = categorie
-        self.image = image
-        self.favoriet = favoriet
-    }
+//    convenience init(titel: String, beschrijving: String, image: UIImage, favoriet: Bool) {
+//        self.init()
+//        self.titel = titel
+//        self.beschrijving = beschrijving
+//        self.image = image
+//        self.favoriet = favoriet
+//    }
     
 //    struct PropertyKeys {
 //        static let titel = "titel"
@@ -63,14 +63,14 @@ class Recept/*: NSObject, NSCoding*/ {
 //        return result
 //    }
     
-    static func loadSampleRecepten() -> [Recept] {
-        let recepten: [Recept] = [
-            Recept(titel: "Eieren met spek", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .overige, image: "4", favoriet: false),
-            Recept(titel: "Boterham met kaas", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3", favoriet: false),
-            Recept(titel: "Eieren met spek 2", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .hoofdgerecht, image: "4", favoriet: false),
-            Recept(titel: "TomatenSoep", ingredienten: ["tomaten","water"], beschrijving: "kiep alles bij elkaar en laat 7 uur koken. Smakelijk!", categorie: .soep, image: "2", favoriet: false),
-            Recept(titel: "Boterham met kaas, salami en groenten", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3", favoriet: true)]
-        
-        return recepten
-    }
+//    static func loadSampleRecepten() -> [Recept] {
+//        let recepten: [Recept] = [
+//            Recept(titel: "Eieren met spek", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .overige, image: "4", favoriet: false),
+//            Recept(titel: "Boterham met kaas", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3", favoriet: false),
+//            Recept(titel: "Eieren met spek 2", ingredienten: ["3 eieren"], beschrijving: "Zet de pan op het vuur, gooi de eieren in de pan. Zet het vuur zo hoog mogelijk tot de eieren klaar zijn. Smakelijk!", categorie: .hoofdgerecht, image: "4", favoriet: false),
+//            Recept(titel: "TomatenSoep", ingredienten: ["tomaten","water"], beschrijving: "kiep alles bij elkaar en laat 7 uur koken. Smakelijk!", categorie: .soep, image: "2", favoriet: false),
+//            Recept(titel: "Boterham met kaas, salami en groenten", ingredienten: ["1 boterham", "1 schel kaas"], beschrijving: "Pak het schelletje kaas en leg dit op de boterham. Plooi de boterham in 2. Smakelijk!", categorie: .hoofdgerecht, image: "3", favoriet: true)]
+//
+//        return recepten
+//    }
 }

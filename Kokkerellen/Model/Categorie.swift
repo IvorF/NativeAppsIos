@@ -1,11 +1,11 @@
 import Foundation
+import RealmSwift
 
-class Categorie {
-    var titel: String
-    var image: String
+class Categorie: Object {
+    @objc dynamic var titel: String = ""
     
-    init(cat: String) {
+    convenience init(cat: String) {
+        self.init()
         self.titel = cat
-        self.image = cat
     }
 }

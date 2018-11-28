@@ -1,10 +1,11 @@
 import UIKit
+import RealmSwift
 
 class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var recepten: [Recept] = []
+    var recepten: [Recept]!
     
     var filteredRecepten: [Recept]!
     var cat: Categorie!
@@ -12,30 +13,46 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //refreshcontrol\\
+        let ref = UIRefreshControl()
+        ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = ref
+        
 //        if let savedData = Recept.loadFromFile() {
 //            recepten.append(contentsOf: savedData)
 //        } else {
-            recepten.append(contentsOf: Recept.loadSampleRecepten())
+            //recepten.append(contentsOf: Recept.loadSampleRecepten())
 //        }
         
-        recepten[0].favoriet = true
+        //recepten[0].favoriet = true
+        recepten = Array(try! Realm().objects(Recept.self))
         
         filterRecept()
         
-        filteredRecepten = recepten
+        filteredRecepten = Array(recepten)
         
         setUpSearchBar()
         alterLayout()
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    
+    //refresh data tableview\\
+    @objc private func refreshData() {
+        recepten = Array(try! Realm().objects(Recept.self))
+        filteredRecepten = Array(recepten)
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     //filter recepten\\
     private func filterRecept() {
         guard (cat != nil) else { return }
-        
+
         recepten = recepten.filter( { recept -> Bool in
-            recept.categorie.rawValue.contains(cat.titel)
+            (recept.categorie.titel == cat.titel)
         } )
-        
+
         print(recepten)
     }
     
@@ -45,7 +62,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else { filteredRecepten = recepten;
+        guard !searchText.isEmpty else { /*filteredRecepten = recepten;*/
             tableView.reloadData()
             return}
         filteredRecepten = recepten.filter( { recept -> Bool in
@@ -71,6 +88,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 recepten[selectedIndexPath.row] = recept
                 filteredRecepten = recepten;
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
             } else {
                 let newIndexPath = IndexPath(row: recepten.count, section: 0)
                 recepten.append(recept)
@@ -78,8 +96,21 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             
-            // Added
-//            Recept.saveToFile(recepten: recepten)
+            //verwijder
+//            let realm = try! Realm()
+//            try! realm.write {
+//                realm.deleteAll()
+//            }
+            
+            //voeg toe in databank\\
+            let realm = try! Realm()
+            try! realm.write {
+                let recepten2 = recepten
+                for recept in recepten2! {
+                    realm.add(recept)
+                }
+            }
+            
         }
     }
     

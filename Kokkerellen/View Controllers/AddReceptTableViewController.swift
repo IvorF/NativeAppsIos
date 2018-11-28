@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
@@ -56,14 +57,40 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         dismiss(animated: true, completion: nil)
     }
     
+    //diplicate verwijderen\\
+    func removeDuplicates(array: [String]) -> [String] {
+        var encountered = Set<String>()
+        var result: [String] = []
+        for value in array {
+            if encountered.contains(value) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
+    }
+    
     var recept: Recept!
     
     var selectedCategorie: String!
     
-    let categorie = ["<< Kies categorie >>", CategorieType.hoofdgerecht.rawValue, CategorieType.voorgerecht.rawValue, CategorieType.dessert.rawValue, CategorieType.soep.rawValue, CategorieType.overige.rawValue,]
+    var categorie = ["<< Kies categorie >>"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //vul categorieen\\
+        let cat = Array(try! Realm().objects(Categorie.self))
+        for titel in cat {
+            categorie.append(titel.titel)
+        }
+        
+        categorie = removeDuplicates(array: categorie)
         
         //savebutton\\
         updateSaveButtonState()
@@ -75,16 +102,16 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         //edit recept\\
         if let recept = recept {
             txtNaam.text = recept.titel
-            txtCategorie.text = recept.categorie.rawValue
+            txtCategorie.text = recept.categorie.titel
             
             let rec = recept.ingredienten
             
             for recept in rec {
-                txtIngredient.text = recept + "\n"
+                txtIngredient.text = recept.titel + "\n"
             }
             
             txtOmschrijving.text = recept.beschrijving
-            imgPhoto.image = UIImage(named: recept.image)
+            //imgPhoto.image = recept.image
         }
     }
     
@@ -149,7 +176,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         lblSave.isEnabled = !titeltext.isEmpty && !beschrijvingText.isEmpty && !ingredientText.isEmpty && !categorieText.isEmpty && !(categorieText == "<< Kies categorie >>") ? true:false
         
         if lblSave.isEnabled {
-            createRecipe();
+            //createRecipe();
         }
     }
     
@@ -157,19 +184,37 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         updateSaveButtonState()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        createRecipe()
+    }
     
     //maken van recept\\
     private func createRecipe() {
         let titel = txtNaam.text ?? ""
-        var ingredient: [String] = []
-        ingredient.append(txtIngredient.text ?? "")
+        let ingredient = txtIngredient.text ?? ""
         let beschrijving = txtOmschrijving.text ?? ""
         let categorie = txtCategorie.text ?? ""
         let image = imgPhoto.image
         
-        //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        recept = Recept(titel: titel, ingredienten: ingredient, beschrijving: beschrijving, categorie: CategorieType(rawValue: categorie) ?? CategorieType.hoofdgerecht, image: "1", favoriet: false)
-        
+        recept = Recept()
+        recept.titel = titel
+        recept.ingredienten.append(Ingredient(titel: ingredient))
+        recept.beschrijving = beschrijving
+        recept.categorie = Categorie(cat: categorie)
+        if image != nil {
+            recept.image = resizeImage(self.imgPhoto.image!, size: CGSize(width: 100, height: 100)).pngData()
+        } else  {
+            recept.image = UIImage(named: "1")!.pngData()
+        }
+    }
+    
+    //resize image\\
+    func resizeImage(_ image: UIImage, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage!
     }
 
     //Table view data source\\
