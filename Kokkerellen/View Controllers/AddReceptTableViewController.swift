@@ -57,6 +57,24 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         dismiss(animated: true, completion: nil)
     }
     
+    //diplicate verwijderen\\
+    func removeDuplicates(array: [String]) -> [String] {
+        var encountered = Set<String>()
+        var result: [String] = []
+        for value in array {
+            if encountered.contains(value) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
+    }
+    
     var recept: Recept!
     
     var selectedCategorie: String!
@@ -71,6 +89,8 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         for titel in cat {
             categorie.append(titel.titel)
         }
+        
+        categorie = removeDuplicates(array: categorie)
         
         //savebutton\\
         updateSaveButtonState()
@@ -156,7 +176,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         lblSave.isEnabled = !titeltext.isEmpty && !beschrijvingText.isEmpty && !ingredientText.isEmpty && !categorieText.isEmpty && !(categorieText == "<< Kies categorie >>") ? true:false
         
         if lblSave.isEnabled {
-            createRecipe();
+            //createRecipe();
         }
     }
     
@@ -164,6 +184,9 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         updateSaveButtonState()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        createRecipe()
+    }
     
     //maken van recept\\
     private func createRecipe() {
@@ -173,7 +196,6 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         let categorie = txtCategorie.text ?? ""
         let image = imgPhoto.image
         
-        //////////////voorlopige vaste waarden\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         recept = Recept()
         recept.titel = titel
         recept.ingredienten.append(Ingredient(titel: ingredient))

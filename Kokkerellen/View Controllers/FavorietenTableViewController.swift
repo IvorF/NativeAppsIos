@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class FavorietenTableViewController: UITableViewController {
 
@@ -6,12 +7,16 @@ class FavorietenTableViewController: UITableViewController {
     
     //refresh data tableview\\
     @objc private func refreshData() {
+        recepten = Array(try! Realm().objects(Recept.self))
+        filterRecept()
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        recepten = Array(try! Realm().objects(Recept.self))
         
 //        if let savedData = Recept.loadFromFile() {
 //            recepten.append(contentsOf: savedData)

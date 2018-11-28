@@ -13,6 +13,11 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //refreshcontrol\\
+        let ref = UIRefreshControl()
+        ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = ref
+        
 //        if let savedData = Recept.loadFromFile() {
 //            recepten.append(contentsOf: savedData)
 //        } else {
@@ -30,6 +35,14 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         alterLayout()
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    
+    //refresh data tableview\\
+    @objc private func refreshData() {
+        recepten = Array(try! Realm().objects(Recept.self))
+        filteredRecepten = Array(recepten)
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     //filter recepten\\
@@ -75,6 +88,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 recepten[selectedIndexPath.row] = recept
                 filteredRecepten = recepten;
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
             } else {
                 let newIndexPath = IndexPath(row: recepten.count, section: 0)
                 recepten.append(recept)
@@ -82,10 +96,19 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             
+            //verwijder
+//            let realm = try! Realm()
+//            try! realm.write {
+//                realm.deleteAll()
+//            }
+            
             //voeg toe in databank\\
             let realm = try! Realm()
             try! realm.write {
-                realm.add(sourceViewController!.recept!)
+                let recepten2 = recepten
+                for recept in recepten2! {
+                    realm.add(recept)
+                }
             }
             
         }
