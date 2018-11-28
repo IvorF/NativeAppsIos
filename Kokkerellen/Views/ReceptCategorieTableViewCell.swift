@@ -26,7 +26,7 @@ class ReceptCategorieTableViewCell: UITableViewCell {
         recepten = Array(try! Realm().objects(Recept.self))
         
         recepten = recepten.filter( { recept -> Bool in
-            (recept.categorie.titel == categorie.titel)
+            (recept.categorie.titel == categorie.titel && recept.image != UIImage(named: "1")!.pngData())
         } )
         
         if recepten.isEmpty {
