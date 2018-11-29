@@ -32,6 +32,14 @@ class FavorietenTableViewController: UITableViewController {
     //verwijderen van recepten uit favorieten\\
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let realm = try! Realm()
+            let predicate = NSPredicate(format: "titel = %@", recepten[indexPath.row].titel)
+            let rec = realm.objects(Recept.self).filter(predicate).first
+            
+            try! realm.write {
+                rec!.favoriet = false
+            }
+            
             recepten.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

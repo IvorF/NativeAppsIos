@@ -88,11 +88,33 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                 filteredRecepten = recepten;
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 
+                //update recept\\
+                let oldRecept = sourceViewController?.oldRecept
+                let realm = try! Realm()
+                let predicate = NSPredicate(format: "titel = %@ AND beschrijving = %@ AND categorie = %@ AND image = %@", oldRecept!.titel, oldRecept!.beschrijving, oldRecept!.categorie, oldRecept!.image! as CVarArg)
+                let rec = realm.objects(Recept.self).filter(predicate).first
+                try! realm.write {
+                    rec!.titel = recept.titel
+                    rec!.beschrijving = recept.beschrijving
+                    rec!.ingredienten = recept.ingredienten
+                    rec!.categorie = recept.categorie
+                    rec!.image = recept.image
+                }
+                
             } else {
                 let newIndexPath = IndexPath(row: recepten.count, section: 0)
                 recepten.append(recept)
                 filteredRecepten = recepten;
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+                //voeg recept toe in databank\\
+                let realm = try! Realm()
+                try! realm.write {
+                    let recepten2 = recepten
+                    for recept in recepten2! {
+                        realm.add(recept)
+                    }
+                }
             }
             
             //verwijder
@@ -101,14 +123,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
 //                realm.deleteAll()
 //            }
             
-            //voeg toe in databank\\
-            let realm = try! Realm()
-            try! realm.write {
-                let recepten2 = recepten
-                for recept in recepten2! {
-                    realm.add(recept)
-                }
-            }
+            
             
         }
     }

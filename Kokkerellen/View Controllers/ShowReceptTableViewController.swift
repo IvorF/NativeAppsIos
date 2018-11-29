@@ -15,16 +15,16 @@ class ShowReceptTableViewController: UITableViewController {
         let predicate = NSPredicate(format: "titel = %@", recept.titel)
         let rec = realm.objects(Recept.self).filter(predicate).first
         
-        
         if recept.favoriet {
-            recept.favoriet = false
+            //recept.favoriet = false
             btnFavorienten.setTitle("Voeg toe aan favorieten", for: .normal)
             
             try! realm.write {
                 rec!.favoriet = false
             }
+            
         } else {
-            recept.favoriet = true
+            //recept.favoriet = true
             btnFavorienten.setTitle("Verwijder uit favorieten", for: .normal)
             
             try! realm.write {
@@ -48,6 +48,19 @@ class ShowReceptTableViewController: UITableViewController {
 
             lblBeschrijving.text = "\n" + recept.beschrijving
             imgPhoto.image = UIImage(data: recept.image)
+        }
+        
+        //favorieten\\
+        updateFavoriet()
+    }
+    
+    private func updateFavoriet() {
+        if recept.favoriet {
+            //recept.favoriet = false
+            btnFavorienten.setTitle("Verwijder uit favorieten", for: .normal)
+        } else {
+            //recept.favoriet = true
+            btnFavorienten.setTitle("Voeg toe aan favorieten", for: .normal)
         }
     }
 
@@ -75,5 +88,5 @@ class ShowReceptTableViewController: UITableViewController {
             addReceptViewController.recept = recept
         }
     }
-
+    
 }

@@ -75,6 +75,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         return result
     }
     
+    var oldRecept: Recept!
     var recept: Recept!
     
     var selectedCategorie: String!
@@ -102,6 +103,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
         
         //edit recept\\
         if let recept = recept {
+            oldRecept = recept
             txtNaam.text = recept.titel
             txtCategorie.text = recept.categorie.titel
             
