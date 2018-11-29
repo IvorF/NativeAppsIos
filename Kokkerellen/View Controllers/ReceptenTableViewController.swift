@@ -128,6 +128,11 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    //refresh on appear\\
+    override func viewDidAppear(_ animated: Bool) {
+        refreshData()
+    }
+    
     //prepare segue voor details recept\\
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //show recept\\

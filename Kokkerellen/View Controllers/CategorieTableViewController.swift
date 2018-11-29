@@ -21,9 +21,15 @@ class CategorieTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
+    //refresh on appear\\
+    override func viewDidAppear(_ animated: Bool) {
+        refreshData()
+    }
+    
     //refresh data tableview\\
     @objc private func refreshData() {
         categorie = removeDuplicates(array: Array(try! Realm().objects(Categorie.self)))
+        recepten = Array(try! Realm().objects(Recept.self))
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
@@ -153,7 +159,6 @@ class CategorieTableViewController: UITableViewController {
             var del:Bool = true
             
             for recept in recepten {
-                print(recept.categorie.titel + "CAT: " + categorie[indexPath.row].titel)
                 if recept.categorie.titel == categorie[indexPath.row].titel {
                     del = false
                 }

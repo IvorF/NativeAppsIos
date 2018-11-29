@@ -29,6 +29,15 @@ class FavorietenTableViewController: UITableViewController {
         
     }
     
+    //refresh on appear\\
+    override func viewDidAppear(_ animated: Bool) {
+        refreshData()
+    }
+    
+    //unwind\\
+    @IBAction func unwindToCategorieTableViewWithSegue(segue: UIStoryboardSegue) {
+    }
+    
     //verwijderen van recepten uit favorieten\\
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
