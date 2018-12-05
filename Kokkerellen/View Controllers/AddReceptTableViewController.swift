@@ -9,6 +9,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
     @IBOutlet weak var txtIngredient: UITextView!
     @IBOutlet weak var txtOmschrijving: UITextView!
     @IBOutlet weak var imgPhoto: UIImageView!
+    @IBOutlet weak var txtTitel: UILabel!
     
     @IBAction func btnPhoto(_ sender: UIButton) {
         //imagepicker\\
@@ -106,6 +107,7 @@ class AddReceptTableViewController: UITableViewController, UIPickerViewDelegate,
             oldRecept = recept
             txtNaam.text = recept.titel
             txtCategorie.text = recept.categorie.titel
+            txtTitel.text = "Pas het recept aan:"
             
             let rec = recept.ingredienten
             
