@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8428815821AF7C42002ED615 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428815721AF7C42002ED615 /* CustomTabBarController.swift */; };
 		843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */; };
 		843F5FCC2192F7480006DA74 /* Categorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCB2192F7480006DA74 /* Categorie.swift */; };
 		843F5FCE2192F7CB0006DA74 /* CategorieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8428815721AF7C42002ED615 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		843F5FC92192F5D70006DA74 /* ReceptCategorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptCategorieTableViewCell.swift; sourceTree = "<group>"; };
 		843F5FCB2192F7480006DA74 /* Categorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorie.swift; sourceTree = "<group>"; };
 		843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieTableViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				843F5FD121932F090006DA74 /* AddReceptTableViewController.swift */,
 				843F5FCD2192F7CB0006DA74 /* CategorieTableViewController.swift */,
 				845880BC219C3284002BD53A /* FavorietenTableViewController.swift */,
+				8428815721AF7C42002ED615 /* CustomTabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				848E091F2180CD2300C98D96 /* ReceptenTableViewController.swift in Sources */,
 				843F5FD021931F540006DA74 /* ShowReceptTableViewController.swift in Sources */,
 				845880BD219C3284002BD53A /* FavorietenTableViewController.swift in Sources */,
+				8428815821AF7C42002ED615 /* CustomTabBarController.swift in Sources */,
 				845880BF219C32A9002BD53A /* FavorietenTableViewCell.swift in Sources */,
 				843F5FCA2192F5D70006DA74 /* ReceptCategorieTableViewCell.swift in Sources */,
 			);

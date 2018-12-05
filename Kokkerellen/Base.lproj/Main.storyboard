@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R99-ES-fEM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R99-ES-fEM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
         <scene sceneID="rqj-5l-1I6">
             <objects>
                 <navigationController id="uR5-nc-4xq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alle Recepten" image="icons8-food-30" id="SNt-K0-YIa"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Alle Recepten" image="icons8-food-30" id="SNt-K0-YIa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lCA-U8-0Qo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -225,7 +225,7 @@
         <scene sceneID="oUO-S8-Buw">
             <objects>
                 <navigationController id="ddM-a1-ovC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorieten" image="icons8-christmas-star-24" id="bWg-gS-L3s"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Favorieten" image="icons8-christmas-star-24" id="bWg-gS-L3s"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5vl-4Z-TOe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -694,10 +694,10 @@
             </objects>
             <point key="canvasLocation" x="2945" y="-479"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="k8v-Ot-bxE">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R99-ES-fEM" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R99-ES-fEM" customClass="CustomTabBarController" customModule="Kokkerellen" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L5E-1b-Osh">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -741,7 +741,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5fZ-sX-s54"/>
-        <segue reference="Qjk-PF-YrL"/>
-        <segue reference="sif-QK-8RR"/>
+        <segue reference="q5M-JQ-hRW"/>
+        <segue reference="ErX-nD-fsA"/>
     </inferredMetricsTieBreakers>
 </document>

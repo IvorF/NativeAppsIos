@@ -16,7 +16,7 @@ class CategorieTableViewController: UITableViewController {
         let ref = UIRefreshControl()
         ref.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         tableView.refreshControl = ref
-
+        
         //edit button\\
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
@@ -66,7 +66,7 @@ class CategorieTableViewController: UITableViewController {
             
             //getting the input values from user\\
             let categorie = alertController.textFields?[0].text
-
+            
             self.categorie.append(Categorie(cat: categorie!))
             self.tableView.reloadData()
             
@@ -105,12 +105,12 @@ class CategorieTableViewController: UITableViewController {
             receptenTableViewController.cat = cat
         }
     }
-
+    
     //aantal secties\\
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     //aantal cellen\\
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -119,19 +119,19 @@ class CategorieTableViewController: UITableViewController {
             return 0
         }
     }
-
+    
     //vullen van de cellen\\
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //dequeue cell\\
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategorieCell", for: indexPath) as! ReceptCategorieTableViewCell
-
+        
         //fetch model object to display\\
         let cat = categorie[indexPath.row]
         
         // Configure cell\\
         cell.update(with: cat)
         cell.showsReorderControl = true
-
+        
         //return cell\\
         return cell
     }
@@ -149,11 +149,11 @@ class CategorieTableViewController: UITableViewController {
     }
     
     //delete knop wordt niet getoond\\
-//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .none
-//    }
+    //    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    //        return .none
+    //    }
     
-    //verwijderen van recepten\\
+    //verwijderen van categorie\\
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             var del:Bool = true
@@ -180,8 +180,8 @@ class CategorieTableViewController: UITableViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             }
-  
+            refreshData()
         }
     }
-
+    
 }

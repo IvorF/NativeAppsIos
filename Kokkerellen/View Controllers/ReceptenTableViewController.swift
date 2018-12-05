@@ -39,6 +39,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
     //refresh data tableview\\
     @objc private func refreshData() {
         recepten = Array(try! Realm().objects(Recept.self))
+        filterRecept()
         filteredRecepten = Array(recepten)
         tableView.reloadData()
         refreshControl?.endRefreshing()
@@ -116,15 +117,6 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
                     }
                 }
             }
-            
-            //verwijder
-//            let realm = try! Realm()
-//            try! realm.write {
-//                realm.deleteAll()
-//            }
-            
-            
-            
         }
     }
     
@@ -199,6 +191,7 @@ class ReceptenTableViewController: UITableViewController, UISearchBarDelegate {
             filteredRecepten.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        refreshData()
     }
     
 }
